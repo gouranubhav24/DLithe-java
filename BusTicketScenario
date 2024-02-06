@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class BusTicketScenario {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter From Stage Number: ");
+        int fromStage = scanner.nextInt();
+        System.out.print("Enter To Stage Number: ");
+        int toStage = scanner.nextInt();
+        System.out.print("Enter Number of Adult Passengers: ");
+        int numAdults = scanner.nextInt();
+        System.out.print("Enter Number of Children Passengers: ");
+        int numChildren = scanner.nextInt();
+        int numStages = Math.abs(toStage - fromStage);
+        double adultCostPerStage = 10.0;
+        double childCostPerStage = 5.0;
+        double totalAdultCost = numAdults * numStages * adultCostPerStage;
+        double totalChildCost = numChildren * numStages * childCostPerStage;
+        double totalTicketCost = totalAdultCost + totalChildCost;
+        double discount = 0.0;
+        if (numAdults >= 5) {
+            discount = 0.20; 
+        } else if (numAdults == 4) {
+            discount = 0.15; 
+        } else if (numAdults == 3) {
+            discount = 0.10; 
+        } else if (numAdults == 2) {
+            discount = 0.05; 
+        }
+        double discountedTicketCost = totalTicketCost - (discount * totalTicketCost);
+        double serviceChargePercentage = 0.05;
+        double serviceCharge = serviceChargePercentage * discountedTicketCost;
+        double totalCostAfterDiscountAndServiceCharge = discountedTicketCost + serviceCharge;
+        System.out.println("\n--- Ticket Details ---");
+        System.out.println("Number of Stages: " + numStages);
+        System.out.println("Total Adult Cost: Rs." + totalAdultCost);
+        System.out.println("Total Child Cost: Rs." + totalChildCost);
+        System.out.println("Total Ticket Cost: Rs." + totalTicketCost);
+        System.out.println("Discount Applied: " + (discount * 100) + "%");
+        System.out.println("Ticket Cost After Discount: Rs." + discountedTicketCost);
+        System.out.println("Service Charge: Rs." + serviceCharge);
+        System.out.println("Total Ticket Cost After Discount and Service Charge: Rs."
+                + totalCostAfterDiscountAndServiceCharge);
+
+    }
+}
