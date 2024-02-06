@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class SeriesGenerator1 {
+    public static void main(String[] args) {
+        Scanner sin = new Scanner(System.in);
+        System.out.println("Enter the values for a, b and n");
+        int  a = sin.nextInt();
+        int b  = sin.nextInt();
+        int n = sin.nextInt();
+        int[] resultseries = generateseries(a,b,n);
+        for(int term :resultseries)
+        {
+            System.out.print(term+" ");
+        }
+
+      }
+      public static int[] generateseries(int a,int b,int n)
+      {
+        int[] series = new int[n];
+        int currentterm = a;
+        for(int i=0;i<n;i++)
+        {
+            
+            currentterm +=Math.pow(2,i)*b;
+            series[i] = currentterm;
+            
+
+        }
+        return series;
+      }
+
+    
+}
