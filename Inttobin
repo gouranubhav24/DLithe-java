@@ -1,0 +1,15 @@
+import java.util.Scanner;
+public class Inttobin
+{
+    public static void main(String args[])
+    {
+        Scanner sin = new Scanner(System.in);
+        System.out.println("Enter the number ");
+        int number = sin.nextInt();
+        System.out.print("The binary of "+number+" is "+BinaryNum(number));
+    }
+    public static String BinaryNum(int number)
+    {
+        return Integer.toBinaryString(number);
+    }
+}      
