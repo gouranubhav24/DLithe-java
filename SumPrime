@@ -1,0 +1,49 @@
+import java.util.Scanner;
+public class SumPrime
+{
+    public static void main(String args[])
+    {
+        Scanner sin = new Scanner(System.in);
+        System.out.print("Enter the number to check sum primes");
+        int number = sin.nextInt();
+        Primedigitsum(number);
+    }
+   public static void Primedigitsum(int number)
+   {
+        int rem = 0,sum=0;
+        while(number > 0)
+        {
+            int temp = number%10;
+            if(prime(temp))
+            {
+                sum = sum + temp;
+            }
+            number = number / 10;
+        }
+        System.out.print(prime(sum));
+   }
+    public static boolean prime(int num)
+    {
+        int i=2;
+        int counter=0;
+        if(num ==1)
+        {
+            return false;
+        }
+        for(i=2;i<num;i++)
+        {
+            if(num%i==0)
+            {
+                counter = counter+1;
+            }
+        }
+        if (counter>0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+}
