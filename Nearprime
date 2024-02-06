@@ -1,0 +1,63 @@
+import java.util.Scanner;
+public class Nearprime
+{
+    public static void main(String args[])
+    {
+        Scanner sin = new Scanner(System.in);
+        System.out.print("Enter the number to find adjacent primes");
+        int number = sin.nextInt();
+        System.out.println("The prime numbers nearer to "+number+" are "+ leftnearestPrime(number)+" "+rightnearestPrime(number));
+    }
+    public static int leftnearestPrime(int number)
+    {
+        int leftprime = 0;
+        
+        for(int i=number;i>0;i--)
+        {
+           
+            if(prime(i))
+            {
+                leftprime = i;
+                break;
+            }
+            
+        }
+       
+        return leftprime;
+    }
+    public static int rightnearestPrime(int number)
+    {
+
+        int rightprime = 0;
+        for(int i=number;i>=number;i++)
+        {
+            if(prime(i))
+            {   
+                rightprime = i;
+                break;
+            }
+            
+        }
+        return rightprime;
+    }
+    public static boolean prime(int num)
+    {
+        int i=2;
+        int counter=0;
+        for(i=2;i<num;i++)
+        {
+            if(num%i==0)
+            {
+                counter = counter+1;
+            }
+        }
+        if (counter>0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+}
