@@ -1,0 +1,38 @@
+import java.util.Scanner;
+public class ReverseNumber
+{
+    public static void main(String args[])
+    {
+        Scanner sin = new Scanner(System.in);
+        System.out.println("Enter the number to be reversed");
+        int number = sin.nextInt();
+        System.out.print("The reverse of "+number+" is "+reverseofnumber(number));
+    }
+    public static int reverseofnumber(int number)
+    {
+        int reverse = 0;
+        if (number>0)
+        {
+            while(number > 0)
+            {
+                int temp = number % 10;
+                reverse = (reverse*10) + temp;
+                number = number/10;
+
+            }
+        }
+        else
+        {
+            number = Math.abs(number);
+            while(number > 0)
+            {
+                int temp = number % 10;
+                reverse = (reverse*10) + temp;
+                number = number/10;
+
+            }
+            reverse = reverse*-1;
+        }
+        return (reverse);
+    }
+}
