@@ -1,0 +1,49 @@
+Given an unsorted array arr of size n that contains only non negative integers, find a sub-array (continuous elements) that has sum equal to s. You mainly need to return the left and right indexes(1-based indexing) of that subarray.
+
+In case of multiple subarrays, return the subarray indexes which come first on moving from left to right. If no such subarray exists return an array consisting of element -1.
+
+Examples:
+
+Input: arr[] = [1,2,3,7,5], n = 5, s = 12
+Output: 2 4
+Explanation: The sum of elements from 2nd to 4th position is 12.
+
+import java.util.ArrayList;
+
+public class Solution {
+    public static ArrayList<Integer> subarraySum(int[] arr, int n, int s) {
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        int start = 0;
+        int sum = 0;
+
+        for (int end = 0; end < n; end++) {
+            sum += arr[end];
+
+            // While currSum is greater than the required sum, remove the starting elements
+            while (sum > s && start < end) {
+                sum -= arr[start];
+                start++;
+            }
+
+            // If currSum becomes equal to the sum, return the indices
+            if (sum == s) {
+                res.add(start + 1); // +1 for 1-based index
+                res.add(end + 1);   // +1 for 1-based index
+                return res;
+            }
+        }
+
+        // If no subarray is found, return -1
+        res.add(-1);
+        return res;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1,2,3};
+        int n = arr.length;
+        int s = 2;
+        
+        ArrayList<Integer> result = subarraySum(arr, n, s);
+        System.out.println(result);
+    }
+}
